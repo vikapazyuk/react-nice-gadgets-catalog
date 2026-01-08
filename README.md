@@ -6,16 +6,13 @@ The app represents an online electronics store where users can browse products b
 ---
 
 ## Live Preview
-
-Nice Gadgets App
-https://vikapazyuk.github.io/react-nice-gadgets-catalog/
+[Nice Gadgets](https://vikapazyuk.github.io/react-nice-gadgets-catalog/)
 
 ---
 
 ## Design Reference
 
-The application design is based on Figma Design:
-https://www.figma.com/design/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog--V2--Original?node-id=0-1&p=f
+Based on [Figma Design](https://www.figma.com/design/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog--V2--Original?node-id=0-1&p=f)
 
 ---
 
@@ -54,15 +51,15 @@ https://www.figma.com/design/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog--V2--Original?
 
 ### Clone the repository
 
-```bash
-git clone https://github.com/vikapazyuk/react-nice-gadgets-catalog.git
-cd react-nice-gadgets-catalog
-npm install
-npm start
+- git clone https://github.com/vikapazyuk/react-nice-gadgets-catalog.git
+- cd react-nice-gadgets-catalog
+- npm install
+- npm start
+
 
 ## Features
 
-- Product catalog with categories: **Phones**, **Tablets**, **Accessories**
+- Product catalog with categories: Phones, Tablets, Accessories
 - Home page with image and product sliders
 - Product sorting, pagination, and items-per-page selection
 - Search with debounce and URL synchronization
