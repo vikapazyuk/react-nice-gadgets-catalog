@@ -1,0 +1,1 @@
+import{r as t,G as e,j as s}from"./index-Cv7QQyO_.js";const r="/react-nice-gadgets-catalog/assets/logo_dark-BfREnrH9.svg",c="/react-nice-gadgets-catalog/assets/logo-CU5-laXR.svg",l=()=>{const{theme:a}=t.useContext(e),o=a==="light";return s.jsx("div",{className:"loader",children:s.jsx("img",{src:o?c:r,alt:"Application Logo",className:"loader__image"})})};export{l as L};
