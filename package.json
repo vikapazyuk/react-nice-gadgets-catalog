@@ -1,6 +1,6 @@
 {
   "name": "react-nice-gadgets-catalog",
-  "homepage": "https://vikapazyuk.github.io/react-nice-gadgets-catalog",
+  "homepage": "react-nice-gadgets-catalog",
   "version": "0.1.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
