@@ -1,0 +1,1 @@
+import{j as s}from"./index-B5vJYzaG.js";import{P as o}from"./ProductCard-Cot9dadz.js";const m=({products:t,displayType:i})=>s.jsx("div",{className:"productsList",children:t.map(r=>s.jsx("div",{className:"productItem",children:s.jsx(o,{product:r,displayType:i})},r.id))});export{m as P};
