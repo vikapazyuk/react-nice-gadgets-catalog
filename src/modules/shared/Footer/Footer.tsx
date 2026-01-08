@@ -1,6 +1,6 @@
 import './Footer.scss';
-import { FC, useCallback, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useCallback, useContext, useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { icons } from '../../../constants/icons.config';
 import { GlobalContext } from '../../../context/GlobalContext';
@@ -13,15 +13,18 @@ const FOOTER_LINKS: FooterLink[] = [
     hasRel: true,
   },
   {
-    href: 'https://github.com/vikapazyuk',
+    href: 'https://www.linkedin.com/in/viktoriia-paziuk-417958333/',
     label: 'Contacts',
     hasRel: true,
   },
-  { href: 'https://github.com/vikapazyuk', label: 'rights' },
+  { href: '/', label: 'rights' },
 ];
 
 export const Footer: FC = () => {
-  const { theme } = useContext(GlobalContext);
+  const { theme, favorites } = useContext(GlobalContext);
+  const { pathname } = useLocation();
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({
@@ -29,6 +32,32 @@ export const Footer: FC = () => {
       behavior: 'smooth',
     });
   }, []);
+
+  const isFavoritesPage = pathname.toLowerCase().includes('favorites');
+
+  // Перевірка, чи сторінка достатньо довга для кнопки
+  useEffect(() => {
+    const updateBackToTop = () => {
+      const isScrollable =
+        document.documentElement.scrollHeight > window.innerHeight;
+
+      // На Favorites кнопка тільки якщо є товари
+      const showButton =
+        isScrollable && (!isFavoritesPage || favorites.length > 0);
+
+      setShowBackToTop(showButton);
+    };
+
+    updateBackToTop(); // перевірка при завантаженні
+
+    window.addEventListener('resize', updateBackToTop);
+    window.addEventListener('load', updateBackToTop); // після завантаження контенту
+
+    return () => {
+      window.removeEventListener('resize', updateBackToTop);
+      window.removeEventListener('load', updateBackToTop);
+    };
+  }, [pathname, favorites.length, isFavoritesPage]);
 
   const logoSrc = theme === 'light' ? 'logo.svg' : 'logo_dark.svg';
 
@@ -54,12 +83,14 @@ export const Footer: FC = () => {
         </div>
 
         <div className="footer__block">
-          <div className="footer__button-wrapper" onClick={scrollToTop}>
-            <button className="footer__button">
-              <Icon icon={icons.arrow_left[theme]} />
-            </button>
-            <span className="footer__button-title">Back to top</span>
-          </div>
+          {showBackToTop && (
+            <div className="footer__button-wrapper" onClick={scrollToTop}>
+              <button className="footer__button">
+                <Icon icon={icons.arrow_left[theme]} />
+              </button>
+              <span className="footer__button-title">Back to top</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

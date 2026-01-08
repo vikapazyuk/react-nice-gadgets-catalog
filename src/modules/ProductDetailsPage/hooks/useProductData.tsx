@@ -35,27 +35,23 @@ export const useProductData = (category: string, productId: string) => {
   );
 
   useEffect(() => {
-    // Якщо немає категорії або id продукту
     if (!category || !productId) {
-      const timeout = setTimeout(() => {
-        setState(prevState => ({
-          ...prevState,
-          isLoading: false,
-          error: 'Invalid product or category',
-        }));
-      }, 0);
-
-      return () => clearTimeout(timeout);
-    }
-
-    // Асинхронне оновлення стану перед завантаженням
-    const timeoutId = setTimeout(async () => {
       setState(prevState => ({
         ...prevState,
-        isLoading: true,
-        error: '',
+        isLoading: false,
+        error: 'Invalid product or category',
       }));
 
+      return;
+    }
+
+    setState(prevState => ({
+      ...prevState,
+      isLoading: true,
+      error: '',
+    }));
+
+    const timeoutId = setTimeout(async () => {
       try {
         const fetchedProducts = await getSpecificProducts(category);
 
